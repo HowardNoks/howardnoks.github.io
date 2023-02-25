@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title> Tutoring Page Portal</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="FaviconIcon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- adjust to mobile view-->
+    <meta name="name" content="Python C++ Java JavaScript Delphi HTML CSS Online Tutor"> <!-- google search engine -->
+    <!-- <meta name="robots" content="noindex, nofollow"> <!-- google search engine wont find it. remember to comment out when page is live -->
+  </head>
+
+  <body>
+    <header> <!-- header tag of the website -->
+      <a href="tutoring.html">
+          <img class="header-logo" src="images/logo/logo1.png" alt="logo" >
+      </a>
+    <!--  </header> -->
+    <!--navigation of links  of the website -->
+      <div class="scroll-wrapperBox">
+        <!-- <div class="item"> <a href="#">Portfolio</a></div>
+        <div class="item"> <a href="abouts.html">About</a></div>
+        <div class="item"> <a href="#">Resume</a></div> -->
+		<div class="item currentPage"> <a href="index.html">Tutoring</a></div>
+        <div class="item"> <a href="contact.html">Contact</a></div>
+      </div>
+    </header>
+
+    <main> <!-- our main content section of the website -->
+    <!--  <section class="tutoring-banner1">
+        <div class="tutb1-vertical-top">
+          <h2> Welcome! </h2>
+        </div>
+      </section>
+    -->
+
+      <!-- slideshow container -->
+      <div class="slideshow-container">
+
+        <!-- Full width images with number and caption text -->
+        <div class="mySlides fade">
+          <img src="images/tutoring/banner1.jpg"  >
+          <div class="text">WELCOME</div>
+		  <!--<div id="text-second">to Master Programming</div> -->
+        </div>
+        <div class="mySlides fade">
+          <img src="images/tutoring/banner2.png"  >
+        </div>
+        <div class="mySlides fade">
+          <img src="images/tutoring/banner3.jpg"  >
+        </div>
+        <div class="mySlides fade">
+          <img src="images/tutoring/banner4.png"  >
+        </div>
+        <div class="mySlides fade">
+          <img src="images/tutoring/banner5.jpg"  >
+        </div>
+        <div class="mySlides fade">
+          <img src="images/tutoring/banner6.jpg"  >
+        </div>
+
+        <!--Next and previous buttons -->
+
+      </div>
+      <br>
+
+      <!--The dots/circle -->
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"> </span>
+        <span class="dot" onclick="currentSlide(2)"> </span>
+        <span class="dot" onclick="currentSlide(3)"> </span>
+        <span class="dot" onclick="currentSlide(4)"> </span>
+        <span class="dot" onclick="currentSlide(5)"> </span>
+        <span class="dot" onclick="currentSlide(6)"> </span>
+      </div>
+
+    <!--  <script>
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides(n) {
+          var i;
+          var slides = document.getElementsByClassName("mySlides");
+          var dots = document.getElementsByClassName("dot");
+
+          for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";
+          }
+          slideIndex++
+          if (slideIndex > slides.length)
+          {
+              slideIndex = 1
+          }
+          for (i = 0; i < dots.length; i++) {
+              dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";
+          dots[slideIndex-1].className += " active";
+          setTimeout(showSlides, 3000); //change image every 3 seconds
+        }
+      </script> -->
+
+      <section>
+        <h2 id="h2-style"> Laughter is the best <br class="brshow">Medicine </h2>
+        <img src="images/tutoring/kevin.jpg" alt="study" class="tutoring-img">
+      </section>
+
+      <section class="tutoring-banner">
+        <div class="tutoring-text-wrapper"> <!-- for the background image and text of the section -->
+          <div class="tutoring-vertical-top"> <!-- container to controls what happens to the text on devices. acts a a wrapper -->
+            <h2> We offer tutoring in all Computer Science, Informatics, and Information Technology courses. </h2>
+            <h2> Listed below are some list of modules offered, using UNISA module code. </h2>
+            <h2> If you don't see your desired module code below, feel free to contact me. </h2>
+            <h2> Computer programming languages such as <br>Python, C++, Delphi, HTML & CSS, Javascript, C#, SQL, etc. are being tutored in levels 
+					such as highschool, college, University.</h2>
+
+            <h3 id="h3MO">MODULES OFFERED : </h3>
+            <ul class="ulclass">
+              <li>COS1511 - Introduction to Programming C++ </li>
+              <li>COS1512 - Introduction to Programming II C++</li>
+              <li>COS1521 - Computer Systems: Fundamental Concepts</li>
+              <li>COS1501 - Theoritical Computer Science I</li>
+              <li>INF1511 - Introduction to Python Programming </li>
+              <li>INF1505 - Intoduction to Business Information System</li>
+              <li>INF1520 - Human Computer Interaction I</li>
+              <li>MAT1503 - Linear Algebra</li>
+			  <li>ICT1513 - Introduction to Web Design (HTML & CSS)</li>
+			  <li>ICT1512 - Interactive Programming I (JavaScript))</li>
+
+              <li>COS2601 - Theoritical Computer Science I</li>
+              <li>COS2614 - Programming: Contemporary Concepts</li>
+			  <li>COS2611 - Data Structure</li>
+              <li>INF2603 - Database I</li>
+              <li>INF2611 - Visual Programming II (Python)</li>
+
+              <li>COS3711 - Advanced Programming QT</li>
+              <li>INF3703 - Database II (SQL)</li>
+			  <li>INF3707 - Database Design & Implementation(SQL)</li>
+              <li>COS3751 - Techniques of Artificial Intelligence</li>
+
+              <li>COS4582 - Machine Learning</li>
+              <li>HRCOS81 - Research Proposal I</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    <div class="index-main-wrapper"> <!-- a wrapper that wraps the footer section after banner -->
+      <footer> <!-- footer section -->
+          <ul class="footer-links-main">
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <ul class="footer-links-cases"> <!-- This will be active when i have done web projects -->
+              <li> Latest Cases </li>
+          </ul>
+          <ul class="footer-links-main">
+            <h2><span class="BL">BE <span class="blinking">LEGENDARY</span></span></h2>
+          </ul>
+          <div class="footer-socialmedia">
+            <a href="https://www.facebook.com/Programming.master.tutors" target="_blank">
+              <img src="images/footer/facebook-logo-button1.png" alt="facebook icon">
+            </a>
+            <a href="https://wa.me/message/QYWL3U5BO5FOD1" target="_blank">
+              <img src="images/footer/whatsapp-logo2.png" alt="whatsapp icon">
+            </a>
+            <!--<a href="#">
+              <img src="images/footer/instagram-logo-button2.png" alt="instagram icon">
+            </a> -->
+          </div>
+        </footer>
+    </div>
+    <hr>
+      <code> Copyright &copy; 2023 Howard Enterprises </code>
+  </body>
+
+  <script type="text/javascript" src="js/myscript.js"></script>
+</html>
