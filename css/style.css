@@ -1,0 +1,1261 @@
+/* first i start designing for mobile view by default */
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+
+}
+
+body{
+  background-color: beige;
+}
+
+main { /* for the fixed header to balance the contents */
+   padding-top: 130px; /* all contents on all pages will go under the header. 130px is the height of my header */
+}
+
+header{
+  background-color: white;
+  width: 100%; /* 100% makes the width go from left to right */
+  height: 130px; /*auto sets it automatically */
+
+  /* remove if i dont want a fixed header */
+  position: fixed; /* this means the header will remain even when we scroll down */
+  top: 0;
+  right: 0;
+  left: 0; /* this means it'll be touching the left top and right part of the browser */
+
+  z-index: 1; /*sets the position of any object to go underneath the header. tutoring images */
+}
+
+
+header .header-logo { /* this means that inside the header we have a class named header-logo to style our logo or brand */
+  cursor: pointer;
+  height: 70px; /*logo size */
+  display: block; /*block makes it easier to style later */
+  margin: 0 auto; /* centers the logo on the page  */
+  text-align: center;
+  padding: 15px 0px; /* 20 pixel from top and bottom, 0 pixels from left and right; the amount of white space given on edges*/
+}
+
+a {  /* style anchor 1 */
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: black;
+
+}
+
+a:active {
+  color: blue;
+}
+
+.scroll-wrapperBox {
+  height: 20px;
+  /*background-color: green;*/
+  overflow-x: scroll; /* makes us scroll horizontally */
+  overflow-y: hidden; /* we dont wanna scroll vertically.so we hide it */
+  white-space: nowrap; /* all text aligned in one line */
+  text-align: center; /* keeps the item list in the center */
+  /*margin-top: 0px; /*take nav bar up. note it is inside the header, so it cant be sticky alone */
+}
+
+/*.scroll-wrapperBox::-webkit-scrollbar {
+  display: none;
+} /* if we want to hide the scrolling cursor */
+
+.item {
+  display: inline-block; /* next to each other */
+  padding: 0 13.9px;
+}
+
+
+.scroll-wrapperBox div a {
+ transition: all 0.3s ease 0s;
+}
+
+.scroll-wrapperBox div a:hover {
+  color: #0088a9;
+}
+
+hr {
+  margin-top: 10px;
+}
+
+.blinking { /* class to make text blink*/
+
+  animation:blinkingText 1.3s infinite;
+}
+@keyframes blinkingText {
+  0%{
+    color: white;
+  }
+  49%{
+    color: white;
+  }
+  60%{
+    color: purple; /* transparent */
+  }
+  99%{
+    color: gold; /* transparent; */
+  }
+  100%{
+    color: white;
+  }
+}
+
+/* nav highlight for mobile*/
+.scroll-wrapperBox .currentPage a{
+  /*background-color: red;
+  border-radius: 4px;*/
+  color: brown;
+}
+
+/* media query for desktop index page header */
+/* it starts changing when it hits 1000px thats the desktop version */
+@media only screen and (min-width: 1000px) {
+  header .header-logo { /* this means that inside the header we have a class named header-logo to style our logo or brand */
+    height: 90px; /*logo size */
+    margin: 20px 0; /*1px takes it 1px from the top*. 0 for left and right */
+    text-align: left; /*takes the logo to the left */
+    padding: 0px 20px 0px 20px; /* 15top, 20right, 0bottom, 20left*/
+    border-right: 3px solid darkgrey; /* i added a border right liine to the header */
+    float: left; /*takes nav to the top */
+  }
+
+  .scroll-wrapperBox { /* scrool box on laptop */
+    overflow-x: hidden;
+
+    margin: 20px 15px 0 20px; /* 0 it is not centered. but it is when you include auto */
+    float: right; /* floats to the right side of aur browser */
+
+    padding: 0 13.9px; /* space between 13.9 links padding left and right */
+    height: auto; /* height of our scroll wrapper nav */
+
+    line-height: 60px; /*include to determines the margin of ul. 100% the original height - 60 = 40 / 2 = 20px */
+
+  }
+
+  /* hover blue line on links */
+  .item {
+    padding-left: 16.1px; /* takes out little blue dot on left */
+  }
+
+  .scroll-wrapperBox .currentPage {
+    /* used for highlight 2022 mod*/
+    background-color: red; /* for the red color */
+    height: 2px; /* to put the red color height above */
+    /*border-radius: 4px; /*curved side */
+  }
+
+  /* current page link highlight*/
+  .currentPage a {
+    background: orange;
+    border-radius: 4px; /*curved side */
+    padding: 7px 7px 7px 7px; /* background color size for links */
+
+    /*color: orange;*/
+
+  }
+
+  /* change  link color back to black from mobile view */
+  .scroll-wrapperBox .currentPage a {
+    color: black;
+  }
+
+  .item::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #0088a9;
+    transition: width .3s;
+    margin-top: -15px;
+  }
+
+  .item:hover::after {
+    width: 100%;
+    transition: width .3s;
+  }
+  /* hover blue line end */
+
+
+}
+
+
+
+/* ------------------------------------ */
+/* start of style for INDEX.html page mobile */
+.index-banner {
+  width: 100%; /* 100% makes the width go from left to right on the page */
+  /*height: 100vh; /*manually adjusting the height of the banner */
+  height: calc(100vh - 400px); /* 100vh is the entire height -130 of the website page. include calc to [minus the header of the page */
+  background-image: url('../images/Mindfulness.gif');
+  background-repeat: no-repeat; /* background styling image doesnt repeat*/
+  background-position: center; /* centers the background image on the page */
+  background-size: cover; /* cover makes it to always fit inside the container, no matter the size or width*/
+  /* to cut the back ground image, we gonna use the calc method minus the header height to remove part of the banner image from the bottom*/
+
+  /* for vertical-center */
+  display: table;
+}
+
+.vertical-center { /* a box that wraps our text. we align it on top or middle or whereever on the page. it wraps it */
+  display: table-cell;
+  vertical-align: middle; /* places the text in the box at the top, middle or where ever you choose */
+}
+
+.index-banner h2 {
+  font-family : 'Playfair Display' serif;
+  font-size: 50px;
+  font-weight : 900;
+  color: white;
+  text-align: center; /* push the text to the center of the page */
+  text-shadow: 2px 2px 8px black; /* gives the h1 text a shadow. first & second are for the shadow. thirs is for blur*/
+  line-height: 60px; /* height between the lines of text. it has to be greater than font size*/
+}
+
+.index-banner h1 {
+  font-family : 'Playfair Display' serif;
+  font-size: 22.9px;
+  font-weight: 500; /* thickness of the text */
+  font-style: bold;
+  color: black;
+  line-height: 35px; /* height between the lines of text. it has to be greater than font size*/
+  text-shadow: 2px 2px 8px white; /* gives the h1 text a shadow. first & second are for the shadow. thirs is for blur*/
+  /*padding: 0px 14.4px; /* 0 pixel from top and bottom, 14 pixels from left and right; the amount of white space given on edges*/
+  text-align: center; /* push the text to the center of the page. this replaced padding above */
+  /* padding or margin, if your'e in another device, it coulld mess up the alignments as the sizes decrease*/
+
+}
+
+.index-boxlinks div { /* we are styling all the divs inside the boxlink container */
+  margin: 16px 16px 0; /* for white spaces at the left and right edges of the box (20). also from top(16) and bottom (0)*/
+  width: calc(100% - 32px); /*  calculate the width of the page - 32px, thats double the margin for both sides*/
+  height: 100px; /* height of the box */
+  background-color: lightblue;
+}
+
+.index-boxlinks div h3 {
+  font-family :  'Playfair Display' serif;
+  font-size: 18.9px;
+  font-weight: 550; /* thickness of the text */
+  line-height: 100px; /* height between the lines of text. it has to be greater than font size*/
+  text-align: center; /* push the text to the center of the page. this replaced padding above */
+  /* padding or margin, if your'e in another device, it coulld mess up the alignments as the sizes decrease*/
+  text-transform: uppercase; /* changes the entire text into uppercase letters */
+  color: black;
+}
+
+.index-squareboxlink h3:hover {
+  color: red;
+}
+.index-rectangleboxlink h3:hover {
+  color: red;
+}
+
+/* --------------FOOTER----------------- */
+footer {
+  width: calc(100% - 80px) ; /*cal with 40px from both left & right which is 80. we dont wanna have more than 100px in width */
+  padding: 40px 40px; /* top & bottom then left & right. paddings are self adjust, always felxible regarding the height*/
+  background-color: black;
+  margin-top: 20px; /* space from top */
+  overflow: hidden; /*fixes footer not displaying cos of too much overflown content */
+}
+
+footer ul {
+  width: fit-content; /* its always gonna change the width depending on the length of text */
+  float: left;
+  padding-left: 20px;
+}
+
+footer ul li {
+  display: block; /*  block can also center things if you are having a hard time*/
+}
+
+footer ul li a {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: white;
+  line-height: 40px;
+}
+
+.footer-links-cases {
+  display: none; /* this lets us hide our cases list for our mobile version */
+}
+
+.footer-socialmedia { /* our footer for social media images */
+  width: 60px; /* image width size */
+  float: right; /* places the images to the right of the footer */
+}
+
+.footer-socialmedia img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+code { /* for hr */
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: table;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.index-main-wrapper { /* used for mobile footer */
+  width: 100%; /* 100% wraps the entire with */
+  margin: 0 auto;
+}
+
+.BL {
+  display: none;
+}
+
+
+/* media query for desktop index page body */
+/* it starts changing when it hits 1000px thats the desktop version */
+@media only screen and (min-width: 1000px) {
+  .index-main-wrapper { /* style our index main wrapper */
+    width: 100%; /* 100% wraps the entire with */
+    margin: 0 auto;
+  }
+
+  body {
+    background-color: white;
+  }
+
+  .index-banner {
+    /*height: 400px; /* manually set the height of the background image */
+    /*background-image: url('../images/Mindfulness.gif');*/
+
+    /* for my picture */
+    background-image: url('../images/howard2-2.jpg');
+    height: 1000px;
+    background-position: top;
+    background-size:  cover;
+  /*  opacity: 0.6; */
+
+  }
+
+  .index-banner h2 { /* i used h2 for my name. i can always switch to h1 if i want it to be found insteasd of web developer */
+    font-family : 'Playfair Display' serif;
+    font-size: 85px;
+    font-weight : 900;
+    text-shadow: 2px 2px 8px black; /* gives the h1 text a shadow. first & second are for the shadow. thirs is for blur*/
+
+    /*for my picture */
+    text-align: left;
+    margin-left: 3rem;
+    /*line-height: 7rem;*/
+    margin-top: 2em;
+  }
+
+  br {
+    display: none /* hides and remove break element from text */
+  }
+
+  .index-banner h1 {
+    display: block;
+    font-size: 35px;
+    line-height: 10px;
+    padding-top: 40px;
+
+    /*for my picture */
+    text-align: left;
+    margin-left: 5rem;
+  }
+
+    /*for my picture */
+  .vertical-center {
+    vertical-align: top;
+  }
+
+  .index-boxlinks {
+    overflow: hidden; /* hides the overflow so it can put a white space padding before the footer */
+  }
+
+  .index-boxlinks div { /* we are styling all the divs inside the boxlink container */
+    margin: 20px 10px 0; /* for white spaces at the left and right edges of the box (20). also from top(16) and bottom (0)*/
+    height: 150px; /* height of the box */
+    background-color: lightgrey;
+    float: left; /* makes the box stays  next to each other */
+  }
+
+  .index-rectangleboxlink {
+    width: calc(50% - 20px) !important; /*important ignores anyother style and run its attached one */
+  }
+
+  .index-squareboxlink { /* box size is 25% each. rectangle is double */
+    width: calc(25% - 20px) !important; /*important ignores anyother style and run its attached one */
+  }
+
+  .index-boxlinks div h3 {
+    line-height: 150px; /* height between the lines of text. it has to be greater than font size. we took the height of divbox*/
+    font-weight: 200;
+  }
+
+  .index-squareboxlink h3:hover {
+    color: red;
+  }
+
+  .index-rectangleboxlink h3:hover {
+    color: green;
+  }
+
+}
+
+
+/* media query for desktop index page footer */
+/* it starts changing when it hits 1000px thats the desktop version */
+@media only screen and (min-width: 1024px) {
+  .BL {
+    padding-left: 12rem;
+    font-size: 90px;
+    display: block;
+  }
+}
+
+
+/*-------------IPAD index.html VERSION --------------*/
+/* media query for ipad header */
+/* it starts changing when it hits 360px thats the desktop version */
+@media only screen and (min-width: 550px) and (max-width: 1000px) {
+  header {
+    position: absolute; /* makes it not to be fixed */
+  }
+}
+
+/* media query for ipad body */
+/* it starts changing when it hits 360px thats the ipad version */
+@media only screen and (min-width: 550px) and (max-width: 1000px) {
+  .index-main-wrapper { /* style our index main wrapper */
+    width: 100%; /* 100% wraps the entire with */
+    margin: 0 auto;
+  }
+
+
+  body {
+    background-color: white;
+  }
+
+  .scroll-wrapperBox { /* scrool box on ipad */
+    overflow-x: hidden;
+  }
+
+
+  .index-banner {
+    height: 400px; /* manually set the height of the background image */
+    background-image: url('../images/Mindfulness.gif');
+  }
+
+  .index-banner h2 { /* i used h2 for my name. i can always switch to h1 if i want it to be found insteasd of web developer */
+    font-family : 'Playfair Display' serif;
+    font-size: 85px;
+    font-weight : 900;
+    text-shadow: 2px 2px 8px black; /* gives the h1 text a shadow. first & second are for the shadow. thirs is for blur*/
+    line-height: 90px; /* height between the lines of text. it has to be greater than font size*/
+  }
+
+
+  /*br {
+    display: none /* hides and remove break element from text *
+  }
+  */
+
+  .index-banner h1 {
+    display: block;
+    font-size: 35px;
+    line-height: 10px;
+    padding-top: 40px;
+  }
+
+  /* box area */
+  .index-boxlinks {
+    overflow: hidden; /* hides the overflow so it can put a white space padding before the footer */
+  }
+
+  .index-boxlinks div { /* we are styling all the divs inside the boxlink container */
+    margin: 20px 10px 0; /* for white spaces at the left and right edges of the box (20). also from top(16) and bottom (0)*/
+    height: 100px; /* height of the box */
+    background-color: lightgrey;
+    float: left; /* makes the box stays  next to each other */
+  }
+
+  .index-rectangleboxlink {
+    width: calc(50% - 20px) !important; /*important ignores anyother style and run its attached one */
+  }
+
+  .index-squareboxlink { /* box size is 25% each. rectangle is double */
+    width: calc(25% - 20px) !important; /*important ignores anyother style and run its attached one */
+  }
+
+  .index-boxlinks div h3 {
+    line-height: 100px; /* height between the lines of text. it has to be greater than font size. we took the height of divbox*/
+    font-weight: 100%;
+    font-size: 100%;
+  }
+}
+
+/* media query for ipad footer */
+/* it starts changing when it hits 360px thats the ipad version */
+@media only screen and (min-width: 550px) and (max-width: 1000px) {
+  .BL {
+    padding-left: 4rem;
+    font-size: 50px;
+    display: block;
+  }
+}
+
+/* media query for ipad pro index page footer */
+/* it starts changing when it hits 1024px thats the ipad pro version */
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+  .BL {
+    /*padding-left: 4rem;
+    font-size: 80px; */
+    display: none;
+  }
+}
+
+/* middle class mobile version hide overflow horiz line */
+@media only screen and (min-width: 360px) {
+  .scroll-wrapperBox { /* scrool box on ipad */
+    overflow-x: hidden;
+  }
+}
+
+
+/* START OF STYLE FOR ABOUT.html PAGE mobile version***********/
+.about-img {
+    border-radius: 25%; /*  50 oval shape */
+    border-style: ridge;
+    display: block;
+    margin: auto; /* centers the image */
+    margin-top: 20px;
+  }
+
+
+.about-wrapperBox {
+    text-align: center;
+    line-height: 30px; /* gap between text */
+  }
+
+.about-wrapperBox h1, h2, h3, h5, p {
+  margin-top: 1rem;
+  text-shadow: 2px 2px 8px white;
+}
+
+.about-wrapperBox h3 {
+  margin-bottom: 0;
+}
+
+.about-wrapperBox h2 {
+  text-decoration: underline;
+}
+
+.about-banner {
+  width: 100%; /* 100% makes the width go from left to right on the page */
+  /*height: 100vh; /*manually adjusting the height of the banner */
+  height: calc(100vh - 400px); /* 100vh is the entire height -130 of the website page. include calc to [minus the header of the page */
+  background-image: url('../images/Mindfulness.gif');
+  background-repeat: no-repeat; /* background styling image doesnt repeat*/
+  background-position: center; /* centers the background image on the page */
+  background-size: cover; /* cover makes it to always fit inside the container, no matter the size or width*/
+  /* to cut the back ground image, we gonna use the calc method minus the header height to remove part of the banner image from the bottom*/
+
+  /* for vertical-center */
+  display: table;
+}
+
+.box-wrapper {
+/*  position: relative; /* items within the box cant go outside of it */
+  width: 320px;
+  height: 340px;
+  border: 1px solid purple;
+  margin: 20px auto;
+}
+
+.box-wrapper h1 {
+  /*position: absolute; /* position any where inside the box */
+  left: 40px;
+  font-size: 2rem;
+}
+
+.box-wrapper p {
+  font-family : 'Playfair Display' serif;
+  font-size: 30px;
+  line-height: 40px;
+  text-shadow: 2px 2px 8px white;
+}
+
+#about-desktop {
+  display: none;
+}
+
+
+/* media query for desktop about page header */
+@media only screen and (min-width: 1000px) {
+
+  }
+
+/****** media query for desktop about page body ******/
+@media only screen and (min-width: 1000px) {
+  .about-banner {
+    display: none;
+  }
+
+  #about-desktop {
+    display: block;
+  }
+
+  #aboutimg-floatbox {
+    width: 400px;
+		border: 1px solid invisible;
+		float: left;
+		margin-left: 20px;
+		margin-right: 20px;
+		text-align: center;
+		background: #cff;
+		margin-bottom: 10px;
+
+    height: 50%;
+    background-image: url('../images/howard2.jpg');
+    background-position: center;
+    clear: right;
+
+    border-radius: 25%; /*  50 oval shape */
+    border-style: none;
+    display: none;
+  }
+
+  #about-margin-desktop {
+    margin-left: 27em; /* 20em  27em white background*/
+
+    /*font-size: 30px !important; /* 25px thickness of the text */
+    /* font-style: italic; */
+    font-weight: lighter;
+    /*text-decoration: overline;*/
+  }
+
+  #li-dot {
+    list-style-type: none;
+    color: yellow;
+  }
+
+  .about-desktop-banner {
+    width: 100%;
+    /*height: 100vh; /*manually adjusting the height of the banner */
+    background-image: url('../images/howard-about3.jpg'); /*background image */
+    background-repeat: no-repeat; /* background styling image doesnt repeat*/
+    /*background-position: center; /* centers the background image on the page */
+    background-size: cover;
+  }
+
+  #about-margin-desktop h1, h2, h3, h4, h5, p {
+    text-shadow: 2px 2px 8px white;
+  }
+
+  #about-margin-desktop h3 {
+    text-shadow: 2px 2px 8px white;
+  }
+
+  .about-wrapperBox { /* delete */
+      text-align: center;
+      line-height: 30px; /* gap between text */
+      /*text-decoration: overline;*/
+    }
+}
+
+
+/* START OF STYLE FOR CONTACT.html PAGE mobile version***********/
+.contact-vertical-top { /* a box that wraps our text. we align it on top or middle or whereever on the page. it wraps it */
+  display: table-cell;
+  vertical-align: top; /* places the text in the box at the top, middle or where ever you choose */
+  text-align: center;
+  line-height: 60px; /* gap between text */
+}
+
+.contact-banner {
+  width: 100%; /* 100% makes the width go from left to right on the page */
+  /*height: 100vh; /*manually adjusting the height of the banner */
+  height: calc(100vh - 400px); /* 100vh is the entire height -130 of the website page. include calc to [minus the header of the page */
+  background-image: url('../images/contact/telephone-v3.jpg');
+  background-repeat: no-repeat; /* background styling image doesnt repeat*/
+  background-position: center; /* centers the background image on the page */
+  background-size: cover; /* cover makes it to always fit inside the container, no matter the size or width*/
+
+  /* for vertical-center */
+  display: table;
+}
+
+.contact-banner h2 {
+  font-family : 'Playfair Display' serif;
+  font-size: 40px;
+  font-weight : 900;
+  color: white;
+  text-align: center; /* push the text to the center of the page */
+  text-shadow: 2px 2px 8px black; /* gives the h1 text a shadow. first & second are for the shadow. thirs is for blur*/
+  line-height: 60px; /* height between the lines of text. it has to be greater than font size*/
+}
+
+.contact-banner h1 {
+  font-family : 'Playfair Display' serif;
+  font-size: 22.9px;
+  font-weight: 500; /* thickness of the text */
+  font-style: bold;
+  color: black;
+  line-height: 35px; /* height between the lines of text. it has to be greater than font size*/
+  text-shadow: 2px 2px 8px white; /* gives the h1 text a shadow. first & second are for the shadow. thirs is for blur*/
+  text-align: center; /* push the text to the center of the page. this replaced padding above */
+}
+
+/* START OF STYLE FOR CONTACT.html PAGE body desktop version***********/
+@media only screen and (min-width: 1000px) {
+  .contact-vertical-top { /* a box that wraps our text. we align it on top or middle or whereever on the page. it wraps it */
+    text-align: left;
+  }
+
+  .contact-banner {
+    height: 100vh;
+  }
+
+  .contact-banner h2 {
+  /*  width: 100%; /* move text to the left */
+    text-align: left;
+    margin-left: 9rem;
+    font-size: 4em;
+    line-height: 7rem;
+  }
+
+  .contact-banner h1 {
+    text-align: left;
+    margin-left: 8em;
+    font-size: 2em;
+  }
+
+  .contact-banner p {
+    margin-left: 16em;
+    font-size: 1rem;
+    line-height: 7rem;
+  }
+
+  .contact-banner a {
+    color: blue;
+  }
+
+  .contact-banner a:hover {
+    text-decoration: underline;
+  }
+
+}
+
+/* START OF STYLE FOR CONTACT.html PAGE IPAD version***********/
+/* media query for ipad body */
+@media only screen and (min-width: 550px) and (max-width: 1000px) {
+  .contact-banner h2 {
+    text-align: left;
+    margin-left: 1rem;
+    font-size: 4em;
+    line-height: 7rem;
+  }
+
+  .contact-banner h1 {
+    text-align: left;
+    margin-left: 2em;
+    font-size: 2em;
+  }
+
+  .contact-banner p {
+    text-align: left;
+    margin-left: 4em;
+    font-size: 1rem;
+    line-height: 7rem;
+  }
+
+}
+
+
+
+/* START OF STYLE FOR BASKETBALL.html PAGE mobile version***********/
+.basketball-banner {
+  width: 100%; /* 100% makes the width go from left to right on the page */
+  /*height: 100vh; /*manually adjusting the height of the banner */
+  height: calc(100vh - 400px); /* 100vh is the entire height -130 of the website page. include calc to [minus the header of the page */
+  background-image: url('../images/basketball/ball1.jpg');
+  background-repeat: no-repeat; /* background styling image doesnt repeat*/
+  background-position: center; /* centers the background image on the page */
+  background-size: cover; /* cover makes it to always fit inside the container, no matter the size or width*/
+
+  /* for vertical-center */
+  display: table;
+  /*margin-top: 10px; /* create space on top */
+}
+
+.basketball-vertical-top { /* a box that wraps our text. we align it on top or middle or whereever on the page. it wraps it */
+  display: table-cell;
+  vertical-align: middle; /* places the text in the box at the top, middle or where ever you choose */
+  text-align: center;
+  line-height: 40px; /* gap between text */
+}
+
+.ballpics-img-box {
+  height: 200px;
+  background-color: inherit;
+  margin-top: 10px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.ballpics-img-box::-webkit-scrollbar {
+  display: none;
+
+}
+
+.ball-pics-gap {
+  padding: 0 4.9px;
+}
+
+.ballpic-manualslide {
+  display: none;
+}
+
+/* START OF STYLE FOR BASKETBALL.html PAGE body desktop version***********/
+@media only screen and (min-width: 1025px) { /* 1025 makes it not ipad pro */
+  .basketball-banner {
+    width: 100%; /* 100% makes the width go from left to right on the page */
+    height: 100vh; /*manually adjusting the height of the banner 100vh*/
+  }
+
+  .basketball-banner h2, h1 {
+    font-size: 60px;
+    line-height: 80px;
+  }
+
+  .ballpics-img-box {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: none; /* hides the mobile and ipad image version */
+  }
+
+  .ballpic-manualslide {
+    display: block;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 70px;
+
+  }
+
+  .ballpic-manualslide .slideshow-container .mySlides img {
+    width: 600px;
+    height: 60%;
+    border-radius: 10%; /* frame style */
+  }
+
+  /* Next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 107%; /* 50% */
+    width: 0 auto;
+    padding: 6px; /* 16px */
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 28px; /*18px */
+    transition: 0.6s ease;
+    border-radius: 3px 3px 3px 3px; /* style all four sides */
+    user-select: none;
+
+    color: grey;
+
+    /*padding-left: 200px;
+    padding-right: 200px;
+
+    margin-left: -290px;
+    margin-right: 380px;*/
+
+  }
+
+  .prev {
+    left: 580px;
+  }
+
+  /* Position the "next button" to the right */
+  .next {
+    right: 580px; /* 0 */
+    /*border-radius: 3px 0 0 3px;*/
+  }
+
+  .prev:hover, .next:hover {
+    background-color: lightgrey;
+  }
+
+  .arrange-dot {
+    margin-top: 40px;
+  }
+
+  /* Next & previous buttons */
+  /*.prev, .next {
+    cursor: pointer;
+    width: 0 auto;
+
+    padding: 100px; /* space between arrows*/ /*
+    color: black;
+    font-weight: bold;
+    margin-left: 26rem;
+    margin-top: 20px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+
+  .prev:hover, .next:hover {
+    background-color: grey;
+  }*/
+
+}
+
+/* START OF STYLE FOR BASKETBALL.html PAGE IPAD version***********/
+/* media query for ipad body. setting max width to 1024 instead of 1000px includes ipad pro aswell */
+@media only screen and (min-width: 550px) and (max-width: 1024px) {
+  .basketball-banner {
+    width: 100%; /* 100% makes the width go from left to right on the page */
+    height: 50vh; /*manually adjusting the height of the banner */
+  }
+
+  .basketball-banner h2 {
+    font-size: 30px;
+    line-height: 80px;
+    width: 50%;
+  }
+
+  .basketball-banner h1 {
+    font-size: 30px;
+    line-height: 80px;
+    width: 50%;
+  }
+
+}
+
+/* media query for ipad footer */
+@media only screen and (min-width: 550px) and (max-width: 1000px) {
+  /*.BL {
+    padding-left: 4rem;
+    font-size: 50px;
+    display: none;
+  }*/
+}
+/* for ipad pro footer */
+@media only screen and (min-width: 1024px) and (max-width: 1367px) {
+  /*.BL {
+    padding-left: 4rem;
+    font-size: 50px;
+    display: none;
+  } */
+}
+
+/* START OF STYLE FOR TUTORING.html PAGE mobile version***********/
+/* css for slideshow container */
+/* Slideshow container */
+.slideshow-container {
+  width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+.slideshow-container img {
+  width: 100%;
+  height: 200px;
+}
+
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 45px;
+  /*padding: 8px 12px;*/
+  position: absolute;
+  bottom: 70px;
+  width: 100%;
+  text-align: center;
+}
+
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  margin-top: 15px;
+}
+
+.active, dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+  /*vertical-align: middle; /* places the text in the box at the top, middle or where ever you choose */
+}
+
+#h2-style {
+ /*font-family : 'Playfair Display' serif;*/
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 30px;
+ font-weight : 400px;
+ color: white;
+ text-align: center; /* push the text to the center of the page */
+ text-shadow: 2px 2px 8px black; /* gives the h1 text a shadow. first & second are for the shadow. thirs is for blur*/
+ line-height: 40px; /* height between the lines of text. it has to be greater than font size*/
+ margin-bottom: -30px;
+ margin-top: 30px; /* top space */
+ font-style: italic;
+}
+
+.tutoring-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  height: 200px;
+  margin-top: 15%;
+  margin-bottom: 10%;
+}
+
+.tutoring-banner {
+  margin: 0 auto; /* important to make styling width both sides */
+  width: 95%; /* 100% makes the width go from left to right on the page */
+  /*height: 100vh; /*manually adjusting the height of the banner */
+  height: calc(100vh - 400px); /* 100vh is the entire height -130 of the website page. include calc to [minus the header of the page */
+  background-image: url('../images/tutoring/bkg.jpg');
+  background-repeat: no-repeat; /* background styling image doesnt repeat*/
+  background-position: center; /* centers the background image on the page */
+  background-size: cover;  /* cover makes it to always fit inside the container, no matter the size or width*/
+  margin-top: 20px;
+
+  /* for vertical-center */
+  display: table;
+}
+
+.tutoring-text-wrapper { /* style our index main wrapper */
+  width: 80%; /* desktop version should be 100% wraps the entire with */
+  margin: 0 auto;
+}
+
+.tutoring-vertical-top { /* a box that wraps our text. we align it on top or middle or whereever on the page. it wraps it */
+  display: table-cell;
+  vertical-align: middle; /* places the text in the box at the top, middle or where ever you choose */
+  text-align: center;
+  line-height: 30px; /* gap between text */
+}
+
+.tutoring-banner h2, h3 {
+ font-family : 'Playfair Display' serif;
+ font-size: 30px;
+ font-weight : 500;
+ color: black;
+ text-align: center; /* push the text to the center of the page */
+ text-shadow: 2px 2px 8px white; /* gives the h1 text a shadow. first & second are for the shadow. thirs is for blur*/
+ line-height: 40px; /* height between the lines of text. it has to be greater than font size*/
+}
+
+.tutoring-banner h3 {
+ line-height: 50px; /* height between the lines of text. it has to be greater than font size*/
+}
+
+.tutoring-banner li {
+ font-family : 'Playfair Display' serif;
+ font-size: 20px;
+ font-weight : 400;
+ color: black;
+ text-shadow: 2px 2px 8px white; /* gives the h1 text a shadow. first & second are for the shadow. thirs is for blur*/
+ line-height: 40px; /* height between the lines of text. it has to be greater than font size*/
+}
+
+.tutoring-banner1 h2 {
+ font-family : 'Playfair Display' serif;
+ font-size: 30px;
+ font-weight : 500;
+ color: black;
+ text-align: center; /* push the text to the center of the page */
+ text-shadow: 2px 2px 8px red; /* gives the h1 text a shadow. first & second are for the shadow. thirs is for blur*/
+ line-height: 40px; /* height between the lines of text. it has to be greater than font size*/
+}
+
+.ulclass {
+    text-align: left;
+    padding-left: 1rem;
+    list-style-type: circle;
+}
+
+#h3MO {
+  font-size: 25px;
+  font-weight: bold;
+  font-family: Helvetica, sans-serif;
+}
+
+
+
+/* START OF STYLE FOR TUTORING.html PAGE body desktop version***********/
+@media only screen and (min-width: 1000px) {
+  .slideshow-container img {
+    width: 100%;
+    height: 600px;
+  }
+
+  .dot {
+    margin-top: 40px;
+  }
+
+  #h2-style {
+   font-size: 80px;
+   font-weight : 400px;
+   color: white;
+   text-shadow: 2px 2px 8px black; /* gives the h1 text a shadow. first & second are for the shadow. thirs is for blur*/
+   margin-bottom: -80px;
+   margin-top: 150px; /* top space */
+   font-style: italic;
+   line-height: 100px;
+  }
+
+  .brshow {
+    display: block; /*shows break for tutoring desktop */
+  }
+
+  .tutoring-img {
+    width: 60%;
+    height: 100%;
+    margin-top: 10%;
+    margin-bottom: 9%;
+  }
+
+  .text {
+    font-size: 85px;
+    bottom: 300px;
+  }
+  
+  #text-second{
+	font-size: 85px;
+	margin-top: -10px;	
+  }
+
+  .tutoring-banner { /* text pics */
+    width: 100%;
+  }
+
+  .tutoring-text-wrapper { /* style our index main wrapper */
+    width: 100%; /* desktop version should be 100% wraps the entire with */
+    margin: 0 auto;
+  }
+
+  .ulclass {
+      width: 35%;
+      margin: 0 auto;
+      padding-left: 5rem;
+      list-style-type: disc;
+  }
+
+}
+
+/* START OF STYLE FOR TUTORING.html PAGE footer desktop version***********/
+@media only screen and (min-width: 1025px) {
+  .BL {
+    /*padding-left: 12rem;
+    font-size: 90px;*/
+    display: block;
+  }
+
+}
+
+
+/* START OF STYLE FOR TUTORING.html PAGE IPAD version***********/
+/* media query for ipad header */
+@media only screen and (min-width: 550px) and (max-width: 1000px) {
+  header {
+    position: absolute; /* makes it not to be fixed */
+  }
+
+}
+
+/* media query for ipad body */
+/* it starts changing when it hits 360px thats the ipad version */
+@media only screen and (min-width: 550px) and (max-width: 1000px) {
+  .slideshow-container img {
+    width: 100%;
+    height: 400px;
+  }
+
+  .text {
+    font-size: 85px;
+    bottom: 150px;
+  }
+
+  .dot {
+    margin-top: 40px;
+  }
+
+  #h2-style {
+   font-size: 90px;
+   font-weight : 200px;
+   line-height: 100px;
+   margin-top: 4rem;
+  }
+
+  .tutoring-img { /* kevin */
+    width: 90%;
+    height: 400px;
+
+  }
+
+  .tutoring-banner { /* text pics */
+    width: 95%;
+  }
+
+  .tutoring-text-wrapper { /* style tutoring text */
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .ulclass {
+    width: 100%;
+    text-align: left;
+    padding-left: 6rem;
+    list-style-type: circle;
+    font: 0px "Arial", serif;
+  }
+
+
+}
